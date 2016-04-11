@@ -1,0 +1,20 @@
+{
+  "generator-angm": {
+    "appName": "leap-analyticx",
+    "angularCookies": true,
+    "angularAnimate": true,
+    "angularSanitize": true,
+    "angularMaterial": true,
+    "modules": [
+      {
+        "name": "login"
+      }
+    ],
+    "menu": [
+      {
+        "link": "login",
+        "title": "Login"
+      }
+    ]
+  }
+}
