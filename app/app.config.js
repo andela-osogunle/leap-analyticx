@@ -24,10 +24,16 @@
 		// This is required for Browser Sync to work poperly
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-		
+
 		$urlRouterProvider
-			.otherwise('/login');
-		
+		  	.otherwise('/login');
+
+	// 	$stateProvider.state( 'login', {
+  //   url: '/login',
+  //   templateUrl: 'login/login.html'
+  // });
+
+
 	}
 
 	runBlock.$inject = ['$rootScope'];
@@ -35,7 +41,7 @@
 	function runBlock($rootScope) {
 		'use strict';
 
-		console.log('AngularJS run() function...');
+		// console.log('AngularJS run() function...');
 	}
 
 

@@ -3,23 +3,26 @@
 			<md-content layout="vertical" flex id="loginContent" layout-align="center center">
 				<div layout="row" layout-align="center center" layout-fill>
 					<md-whiteframe class="md-whiteframe-z2" layout="column" flex="35" layout-padding>
-						<form name="projectForm">
+						<form name="projectForm" >
 						<md-content md-theme="docs-light">
 							<!--<md-input-container layout-fill>
 								<label>Email</label>
 								<input ng-model="user.email">
 							</md-input-container>-->
 							<md-input-container class="md-block">
-								<label>Name</label>
-								<input required name="clientName" ng-model="user.email">
+								<label>Username</label>
+								<input required name="clientName" ng-model="username">
 								<div ng-messages="projectForm.clientName.$error">
 									<div ng-message="required">This is required.</div>
 								</div>
 							</md-input-container>
 							<md-input-container class="md-block">
 								<!-- Use floating placeholder instead of label -->
-								<md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-								<input ng-model="user.email" type="email" placeholder="Email" ng-required="true">
+								<!-- <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon> -->
+								<input ng-model="password" type="password" placeholder="Password" ng-required="true">
+								<div ng-messages="projectForm.clientName.$error">
+									<div ng-message="required">This is required.</div>
+								</div>
 							</md-input-container>
 							<!--<md-input-container layout-fill>
 								<label>Password</label>
@@ -28,6 +31,10 @@
 							<md-input-container layout-align="center center">
 								<div layout="row" layout-sm="column" layout-margin>
 								<md-button class="md-raised" flex="50" flex-sm="100" ng-click="login()">Login</md-button>
+								<img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+	 </div>
+</form>
+
 								</div>
 							</md-input-container>
 						</md-content>
