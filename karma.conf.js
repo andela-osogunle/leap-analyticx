@@ -24,6 +24,7 @@ module.exports = function (config) {
 			'src/bower_components/angular-material/angular-material.js',
 			'src/bower_components/angular-messages/angular-messages.js',
 			'src/bower_components/angular-material-icons/angular-material-icons.js',
+			'src/bower_components/ngstorage/ngStorage.js',
 			'app/app.js',
 			'app/modules/home/homeModule.js',
 			'app/modules/home/homeCtrl.js',

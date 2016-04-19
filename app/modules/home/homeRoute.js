@@ -11,7 +11,7 @@
 angular.module('leap-analyticx')
 	.config(['$stateProvider', function ($stateProvider) {
 		$stateProvider
-			
+
 			.state('home', {
 				url: '',
 				abstract: true,
@@ -21,7 +21,9 @@ angular.module('leap-analyticx')
 			})
 			.state('home.dashboard', {
 				url:'/dashboard',
-				templateUrl: 'app/modules/home/dashboard.html'
+				templateUrl: 'app/modules/home/dashboard.html',
+				controller: 'DashboardCtrl'
+
 			});
-			
+
 	}]);

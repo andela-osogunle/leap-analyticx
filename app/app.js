@@ -13,7 +13,7 @@
 	angular.module('leap-analyticx', [
 		'ngResource',
 		'ngAria',
-		 'ngMaterial',
+		'ngMaterial',
 		'ngMdIcons',
 		'ngCookies',
 		'ngAnimate',
@@ -21,6 +21,8 @@
 		'ui.router',
 		'home',
 		'login',
-	]);
+		'ngProgress',
+		'googlechart'
+		]);
 
 })();
