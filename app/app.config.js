@@ -14,24 +14,22 @@
 		.module('leap-analyticx')
 		.config(configure)
 		.run(runBlock);
+		
 
 	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
 
 	function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-
-		$locationProvider.hashPrefix('!');
-
 		// This is required for Browser Sync to work poperly
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+		 //$httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 
 
 		$urlRouterProvider
-		  	.otherwise('/login');
+				.otherwise('/login');
 
-	// 	$stateProvider.state( 'login', {
-  //   url: '/login',
-  //   templateUrl: 'login/login.html'
-  // });
+		//$locationProvider.hashPrefix('!');
+
+
 
 
 	}
