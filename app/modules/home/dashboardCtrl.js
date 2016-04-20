@@ -16,17 +16,20 @@ angular.module("home", ['ngMaterial','ngMessages'])
     $scope.showViewCount = function(){
       $scope.myVar = !$scope.myVar;
     }
-   $scope.myDate = new Date();
-   $scope.minDate = new Date(
-      $scope.myDate.getFullYear(),
-      $scope.myDate.getMonth() - 2,
-      $scope.myDate.getDate());
-   $scope.maxDate = new Date(
-      $scope.myDate.getFullYear(),
-      $scope.myDate.getMonth() + 2,
-      $scope.myDate.getDate());
+      $scope.startDate = new Date();
+      $scope.minDate = new Date(
+      $scope.startDate.getFullYear(),
+      $scope.startDate.getMonth() - 2,
+      $scope.startDate.getDate());
+
+      $scope.endDate = new Date();
+      $scope.maxDate = new Date(
+      $scope.endDate.getFullYear(),
+      $scope.endDate.getMonth() - 2,
+      $scope.endDate.getDate());
+     
   //Hard coded data given to the course Items to be selected via check boxes
-    $scope.items = [1,2,3,4,5];
+      $scope.items = [1,2,3,4,5];
       $scope.selected = [];
       $scope.toggle = function (item, list) {
         var idx = list.indexOf(item);
