@@ -8,9 +8,34 @@
 //   $scope.legend = true;
 // });
 
-angular.module("home", [])
+angular.module("home", ['ngMaterial','ngMessages'])
 
 .controller("DashboardCtrl", function ($scope,$http,$window) {
+
+    $scope.myVar = false;
+    $scope.showViewCount = function(){
+      $scope.myVar = !$scope.myVar;
+    }
+   $scope.myDate = new Date();
+   $scope.minDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() - 2,
+      $scope.myDate.getDate());
+   $scope.maxDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() + 2,
+      $scope.myDate.getDate());
+  //Hard coded data given to the course Items to be selected via check boxes
+    $scope.items = [1,2,3,4,5];
+      $scope.selected = [];
+      $scope.toggle = function (item, list) {
+        var idx = list.indexOf(item);
+        if (idx > -1) list.splice(idx, 1);
+        else list.push(item);
+      };
+      $scope.exists = function (item, list) {
+        return list.indexOf(item) > -1;
+      };
 
   // store response data in a variable
   var responsejson;
@@ -19,13 +44,13 @@ angular.module("home", [])
   $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   $http.defaults.headers.common['Content-Type'] = 'application/json';
   $http.defaults.headers.common['x-auth-token'] = $window.sessionStorage.Token;
-  console.log($window.sessionStorage.Token);
+  //console.log($window.sessionStorage.Token);
   $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course")
   .then(function(response) {
     // store response data in a variable
     
     responsejson = response.data;
-    console.log(response.data);
+    //console.log(response.data);
     // var graphMainArr=[];
     // var graphInnerArr=[];
     //var columnArr=['Course Name','View Count'];
@@ -46,7 +71,7 @@ angular.module("home", [])
 
       graphMainArr.push(graphInnerArr);
       graphInnerArr=[];
-      console.log(graphMainArr);
+      //console.log(graphMainArr);
 
     }
     $scope.chartObject = {};
