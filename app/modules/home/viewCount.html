@@ -1,0 +1,51 @@
+<center >
+  <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
+  
+  <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>
+  <h1>Filters</h1>
+  <div layout="row" layout-wrap  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6">
+    <div flex="100" flex-gt-sm="50" layout="column">
+      <div>
+        <!--
+          In IE, we cannot apply flex directly to <fieldset>
+          @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+        -->
+        <fieldset class="standard" >
+        <h2>Filter By Courses</h2>
+          <div layout="row" layout-wrap flex>
+            <div flex="50" ng-repeat="item in items">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+              </md-checkbox>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="standard" >
+        <h3>Filter By Users</h3>
+          <div layout="row" layout-wrap flex>
+            <div flex="50" ng-repeat="item in items">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+              </md-checkbox>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div flex="100" flex-gt-sm="50" layout="column">
+    </div>
+    <!--Commentted because its to check the data binded or not-->
+    <!-- <div flex="100">
+      <h2 class="md-title">Selected Items</h2>
+      <code style="display: block; padding: 8px;">{{selected | json}}</code>
+    </div> -->
+  </div>
+  <div>
+  <md-title>Start date</md-title>
+  <md-datepicker ng-model="startDate" md-placeholder="Enter date"></md-datepicker>
+  <md-title>End date</md-title>
+  <md-datepicker ng-model="endDate" md-placeholder="Enter date"></md-datepicker>
+        {{myDate}}
+
+</center>

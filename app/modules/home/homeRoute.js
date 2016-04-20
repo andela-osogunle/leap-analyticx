@@ -19,10 +19,23 @@ angular.module('leap-analyticx')
 				controller: 'HomeCtrl',
 				controllerAs: 'vm'
 			})
+			.state('home.viewCount', {
+				url:'/viewcount',
+				templateUrl: 'app/modules/home/viewCount.html',
+				controller: 'ViewCountCtrl'
+
+			})
 			.state('home.dashboard', {
 				url:'/dashboard',
 				templateUrl: 'app/modules/home/dashboard.html',
-				controller: 'DashboardCtrl'
+				controller: 'ViewCountCtrl'
+
+			})
+
+			.state('home.timeSpent', {
+				url:'/timeSpent',
+				templateUrl: 'app/modules/home/timeSpent.html',
+				controller: 'ViewCountCtrl'
 
 			});
 
