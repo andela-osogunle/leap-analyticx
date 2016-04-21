@@ -10,27 +10,21 @@
           In IE, we cannot apply flex directly to <fieldset>
           @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
         -->
-        <fieldset class="standard" >
-        <h2>Filter By Courses</h2>
-          <div layout="row" layout-wrap flex>
-            <div flex="50" ng-repeat="item in courses">
-              <md-checkbox ng-checked="exists(item, selectedCourses)" ng-click="toggle(item, selectedCourses)">
-                {{ item }} <span ng-if="exists(item, selectedCourses)">selected</span>
-              </md-checkbox>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="standard" >
-        <h3>Filter By Users</h3>
-          <div layout="row" layout-wrap flex>
-            <div flex="50" ng-repeat="item in users">
-              <md-checkbox ng-checked="exists(item, selectedUsers)" ng-click="toggle(item, selectedUsers)">
-                {{ item }} <span ng-if="exists(item, selectedUsers)">selected</span>
-              </md-checkbox>
-            </div>
-          </div>
-        </fieldset>
+        <md-select ng-model="selectedVegetables"
+                   md-on-close="clearSearchTerm()"
+                   data-md-container-class="selectdemoSelectHeader"
+                   multiple>
+          <md-select-header class="demo-select-header">
+            <input ng-model="searchTerm"
+                   type="search"
+                   placeholder="Search for a vegetable.."
+                   class="demo-header-searchbox _md-text">
+          </md-select-header>
+          <md-optgroup label="vegetables">
+            <md-option ng-value="vegetable" ng-repeat="vegetable in vegetables |
+              filter:searchTerm">{{vegetable}}</md-option>
+          </md-optgroup>
+        </md-select>
       </div>
     </div>
     <div flex="100" flex-gt-sm="50" layout="column">
