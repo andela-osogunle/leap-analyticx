@@ -18,12 +18,23 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
       $scope.courses = ['C1' ,'C2' ,'C3' ,'C4' ,'C5', 'C6'];
       $scope.searchTerm;
       $scope.clearSearchTerm = function() {
-        $scope.searchTerm = '';
+      $scope.searchTerm = '';
       };
       // The md-select directive eats keydown events for some quick select
       // logic. Since we have a search input here, we don't need that logic.
       $element.find('input').on('keydown', function(ev) {
-          ev.stopPropagation();
+      ev.stopPropagation();
+      });
+
+      $scope.users = ['U1' ,'U2' ,'U3' ,'U4' ,'U5', 'U6'];
+      $scope.searchTerm;
+      $scope.clearSearchTerm = function() {
+      $scope.searchTerm = '';
+      };
+      // The md-select directive eats keydown events for some quick select
+      // logic. Since we have a search input here, we don't need that logic.
+      $element.find('input').on('keydown', function(ev) {
+      ev.stopPropagation();
       });
   $scope.name="To be prepared";
   $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

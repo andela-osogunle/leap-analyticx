@@ -1,5 +1,6 @@
-<div layout="row" layout-align="center center">
-<md-select ng-model="selectedVegetables" placeholder="Select courses to filter"
+<div layout="row" layout-align="space-between center">
+<h1>Filters</h1>
+<md-select ng-model="selectedCourses" placeholder="Select courses to filter"
                    md-on-close="clearSearchTerm()"
                    data-md-container-class="selectdemoSelectHeader"
                    multiple>
@@ -14,10 +15,27 @@
               filter:searchTerm">{{course}}</md-option>
           </md-optgroup>
         </md-select>
+
+  <md-select ng-model="selectedUsers" placeholder="Select users to filter"
+                   md-on-close="clearSearchTerm()"
+                   data-md-container-class="selectdemoSelectHeader"
+                   multiple>
+          <md-select-header class="demo-select-header">
+            <input ng-model="searchTerm"
+                   type="search"
+                   placeholder="Search for a Users.."
+                   class="demo-header-searchbox _md-text">
+          </md-select-header>
+          <md-optgroup label="users">
+            <md-option ng-value="user" ng-repeat="user in users |
+              filter:searchTerm">{{user}}</md-option>
+          </md-optgroup>
+        </md-select>      
   
   <md-datepicker ng-model="startDate"  md-placeholder="Enter start date"></md-datepicker>
   
   <md-datepicker ng-model="endDate" md-placeholder="Enter end date"></md-datepicker>
+  <md-button class="md-raised md-primary">Submit</md-button>
   </div>
 
   <div layout="row" layout-wrap  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6">
