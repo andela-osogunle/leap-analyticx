@@ -6,16 +6,16 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
   var graphInnerArr=[];
  
       $scope.myDate = new Date();
-  $scope.minDate = new Date(
+      $scope.minDate = new Date(
       $scope.myDate.getFullYear(),
       $scope.myDate.getMonth() - 2,
       $scope.myDate.getDate());
-  $scope.maxDate = new Date(
+      $scope.maxDate = new Date(
       $scope.myDate.getFullYear(),
       $scope.myDate.getMonth() + 2,
       $scope.myDate.getDate());
 
-   $scope.vegetables = ['Corn' ,'Onions' ,'Kale' ,'Arugula' ,'Peas', 'Zucchini'];
+      $scope.courses = ['C1' ,'C2' ,'C3' ,'C4' ,'C5', 'C6'];
       $scope.searchTerm;
       $scope.clearSearchTerm = function() {
         $scope.searchTerm = '';

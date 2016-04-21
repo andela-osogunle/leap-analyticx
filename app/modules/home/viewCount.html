@@ -1,45 +1,40 @@
-<center >
+<center>
   <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
-  
-  <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>
-  <h1>Filters</h1>
+
   <div layout="row" layout-wrap  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6">
     <div flex="100" flex-gt-sm="50" layout="column">
       <div>
+       <h1>Filters</h1>
         <!--
           In IE, we cannot apply flex directly to <fieldset>
           @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
         -->
-        <md-select ng-model="selectedVegetables"
+
+        <md-select ng-model="selectedVegetables" placeholder="Select courses to filter"
                    md-on-close="clearSearchTerm()"
                    data-md-container-class="selectdemoSelectHeader"
                    multiple>
           <md-select-header class="demo-select-header">
             <input ng-model="searchTerm"
                    type="search"
-                   placeholder="Search for a vegetable.."
+                   placeholder="Search for a Courses.."
                    class="demo-header-searchbox _md-text">
           </md-select-header>
-          <md-optgroup label="vegetables">
-            <md-option ng-value="vegetable" ng-repeat="vegetable in vegetables |
-              filter:searchTerm">{{vegetable}}</md-option>
+          <md-optgroup label="courses">
+            <md-option ng-value="course" ng-repeat="course in courses |
+              filter:searchTerm">{{course}}</md-option>
           </md-optgroup>
         </md-select>
-      </div>
-    </div>
-    <div flex="100" flex-gt-sm="50" layout="column">
-    </div>
-    <!--Commentted because its to check the data binded or not-->
-    <!-- <div flex="100">
-      <h2 class="md-title">Selected Items</h2>
-      <code style="display: block; padding: 8px;">{{selected | json}}</code>
-    </div> -->
-  </div>
-  <div>
+        <div>
   <md-title>Start date</md-title>
   <md-datepicker ng-model="startDate" md-placeholder="Enter date"></md-datepicker>
   <md-title>End date</md-title>
   <md-datepicker ng-model="endDate" md-placeholder="Enter date"></md-datepicker>
-        {{myDate}}
-
+  </div>
+      </div>
+    </div>
+  
+  <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>
+  </div>
+  
 </center>
