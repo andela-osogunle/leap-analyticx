@@ -1,5 +1,6 @@
-<div layout="row" layout-align="space-between center">
+<div layout="row" layout-align="space-between center" layout-xs="6" layout-gt-xs="6" layout-sm="6" layout-gt-sm="6" >
 <h1>Filters</h1>
+<i class="material-icons md-36">book</i>
 <md-select ng-model="selectedCourses" placeholder="Select courses to filter"
                    md-on-close="clearSearchTerm()"
                    data-md-container-class="selectdemoSelectHeader"
@@ -15,7 +16,7 @@
               filter:searchTerm">{{course}}</md-option>
           </md-optgroup>
         </md-select>
-
+        <i class="material-icons md-36">face</i>
   <md-select ng-model="selectedUsers" placeholder="Select users to filter"
                    md-on-close="clearSearchTerm()"
                    data-md-container-class="selectdemoSelectHeader"
