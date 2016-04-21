@@ -13,9 +13,9 @@
         <fieldset class="standard" >
         <h2>Filter By Courses</h2>
           <div layout="row" layout-wrap flex>
-            <div flex="50" ng-repeat="item in items">
-              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+            <div flex="50" ng-repeat="item in courses">
+              <md-checkbox ng-checked="exists(item, selectedCourses)" ng-click="toggle(item, selectedCourses)">
+                {{ item }} <span ng-if="exists(item, selectedCourses)">selected</span>
               </md-checkbox>
             </div>
           </div>
@@ -24,9 +24,9 @@
         <fieldset class="standard" >
         <h3>Filter By Users</h3>
           <div layout="row" layout-wrap flex>
-            <div flex="50" ng-repeat="item in items">
-              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                {{ item }} <span ng-if="exists(item, selected)">selected</span>
+            <div flex="50" ng-repeat="item in users">
+              <md-checkbox ng-checked="exists(item, selectedUsers)" ng-click="toggle(item, selectedUsers)">
+                {{ item }} <span ng-if="exists(item, selectedUsers)">selected</span>
               </md-checkbox>
             </div>
           </div>
