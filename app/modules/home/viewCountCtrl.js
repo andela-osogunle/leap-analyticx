@@ -163,6 +163,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
         else if(courseIdArr.length > 0 && userIdArr.length > 0){
 
+          
           $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course&id="+courseIdArr+"&users="+userIdArr)
           .then(function(response) {
             var responseUser;
@@ -213,6 +214,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
 
        else if(userIdArr ){
+
 
           $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course&users="+userIdArr)
           .then(function(response) {
