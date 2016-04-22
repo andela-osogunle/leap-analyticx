@@ -57,7 +57,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
         var userData = response.data.users;
 
-        console.log(userData);
+        //console.log(userData);
         for( i = 0; i < userData.length ; i++){
 
           userObjectList[i] = {"name":userData[i].name,
@@ -69,7 +69,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
 
         }
-        console.log(userObjectList);
+        //console.log(userObjectList);
         $scope.users = userObjectList;
         $scope.searchTerm;
         $scope.clearSearchTerm = function() {
@@ -90,7 +90,6 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
         // for (prop in item){
         //   console.log(item[prop]);
         // }
-
         tempSelectedUser = item;
       }
 
@@ -105,29 +104,30 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
           courseIdArr.push(tempSelectedCourse[i].id);
 
         }
-        console.log(courseIdArr);
-        for( i = 0; i < tempSelectedUser.length ; i++){
+        //console.log(courseIdArr);
 
-          userIdArr.push(tempSelectedUser[i].id);
+        for( j = 0; j < tempSelectedUser.length ; j++){
+
+          userIdArr.push(tempSelectedUser[j].id);
         }
 
-        if(typeof courseIdArr !== 'undefined' && courseIdArr.length > 0){
+        if(courseIdArr.length > 0 && userIdArr.length ==0 ){
           $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course&id="+courseIdArr)
           .then(function(response) {
             var responseCourse;
             var courseGraphArr = [];
             // store response data in a variable
             responseCourse = response.data;
-
+            console.log(responseCourse);
+            if(responseCourse.ResultData.length >0){
+             // console.log("No data found");
             for( i = 0; i < responseCourse.ResultData.length ; i++){
+               
               delete responseCourse.ResultData[i].CourseId;
-              // graphInnerArr.push({v: responsejson.ResultData[i].CourseName});
-              // graphInnerArr.push({v: responsejson.ResultData[i].Total_times_attempted});
-              //
-              // graphMainArr.push({c: graphInnerArr});
-              // graphInnerArr=[];
+
               courseGraphArr.push({c: [{v: responseCourse.ResultData[i].CourseName},{v: responseCourse.ResultData[i].Total_times_attempted}]});
             }
+          }
 
 
             //console.log(courseGraphArr);
@@ -161,7 +161,59 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
         });
         }
 
-        if(userIdArr){
+        else if(courseIdArr.length > 0 && userIdArr.length > 0){
+
+          $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course&id="+courseIdArr+"&users="+userIdArr)
+          .then(function(response) {
+            var responseUser;
+            var userGraphArr = [];
+            // store response data in a variable
+
+            responseUser = response.data;
+            console.log(responseUser);
+            if(responseUser.ResultData.length>0){
+            for( i = 0; i < responseUser.ResultData.length ; i++){
+              delete responseUser.ResultData[i].CourseId;
+              delete responseUser.ResultData[i].UsersAttempt[0].userId;
+              userGraphArr.push({c: [{v: responseUser.ResultData[i].CourseName},{v: responseUser.ResultData[i].UsersAttempt[0].Total_times_attempted}]});
+            }}
+
+
+            //console.log(courseGraphArr);
+            $scope.chartObject = {};
+            $scope.chartObject.type = "ColumnChart";
+
+            $scope.chartObject.data = {"cols": [
+              {id: "t", label: "Course Name", type: "string"},
+              {id: "s", label: "View Count", type: "number"}
+            ], "rows": userGraphArr
+          };
+
+
+          $scope.chartObject.options = {
+            'title': 'Graph',
+            'vAxis': {
+              'title': 'View Count',
+              logScale:true,
+              'gridlines': {
+                'count': 10
+              }
+            },
+            'hAxis': {
+              'title': 'Courses',
+
+            }
+          };
+
+
+
+        });
+        }
+
+
+
+       else if(userIdArr ){
+
           $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course&users="+userIdArr)
           .then(function(response) {
             var responseUser;
@@ -170,17 +222,12 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
             responseUser = response.data;
             console.log(responseUser);
-
+            if(responseUser.ResultData.length>0){
             for( i = 0; i < responseUser.ResultData.length ; i++){
               delete responseUser.ResultData[i].CourseId;
               delete responseUser.ResultData[i].UsersAttempt[0].userId;
-              // graphInnerArr.push({v: responsejson.ResultData[i].CourseName});
-              // graphInnerArr.push({v: responsejson.ResultData[i].Total_times_attempted});
-              //
-              // graphMainArr.push({c: graphInnerArr});
-              // graphInnerArr=[];
               userGraphArr.push({c: [{v: responseUser.ResultData[i].CourseName},{v: responseUser.ResultData[i].UsersAttempt[0].Total_times_attempted}]});
-            }
+            }}
 
 
             //console.log(courseGraphArr);
