@@ -1,6 +1,8 @@
 <div layout="row" layout-align="space-between center" layout-xs="6" layout-gt-xs="6" layout-sm="6" layout-gt-sm="6" >
 <h1>Filters</h1>
-<i class="material-icons md-36">book</i>
+<div class="inset">
+                    <ng-md-icon icon="description"></ng-md-icon>
+                </div>
 <md-select id="mg-courseSelector" ng-change="onCourseSelectValueChange(ddlvalue)"  data-ng-model="ddlvalue"  placeholder="Select courses"
                    md-on-close="clearSearchTerm()"
                    data-md-container-class="selectdemoSelectHeader"
@@ -15,8 +17,10 @@
             <md-option ng-value="course" ng-repeat="course in courses track by $index">{{course.title}}</md-option>
           </md-optgroup>
         </md-select>
-        <i class="material-icons md-36">face</i>
-  <md-select  ng-change="onUserSelectValueChange(ddlvalue1)"  data-ng-model="ddlvalue1" placeholder="Select users"
+                <div class="inset">
+                    <ng-md-icon icon="people"></ng-md-icon>
+                </div>
+            <md-select  ng-change="onUserSelectValueChange(ddlvalue1)"  data-ng-model="ddlvalue1" placeholder="Select users"
                    md-on-close="clearSearchTerm()"
                    data-md-container-class="selectdemoSelectHeader"
                    multiple>

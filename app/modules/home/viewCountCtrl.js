@@ -421,8 +421,6 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
         }
       };
 
-
-
-    });
-
+     });
   });
+
