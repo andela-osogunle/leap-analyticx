@@ -1,5 +1,5 @@
-angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$window,$element) {
-
+angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia) {
+  
   // store response data in a variable
   var responsejson;
   var graphMainArr=[];
@@ -15,8 +15,8 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
   var BASE_VIEW_COUNT_API = "http://10.11.9.8/api/v1/";
 
 
-  $scope.myDate = new Date();
-  $scope.minDate = new Date(
+    $scope.myDate = new Date();
+    $scope.minDate = new Date(
     $scope.myDate.getFullYear(),
     $scope.myDate.getMonth() - 2,
     $scope.myDate.getDate());
@@ -122,7 +122,6 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
             var courseGraphArr = [];
             // store response data in a variable
             //responseCourse = data;
-            console.log(" success ",responseCourse.ResultData);
 
             if(responseCourse.ResultData.length >= 0){
               console.log("No data found");
@@ -132,7 +131,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
               var obj = responseCourse.ResultData[i];
               var course_name = obj.CourseName;
-              var total_time_attempted = obj.UsersAttempt[i].Total_times_attempted;
+              var total_time_attempted = obj.UsersAttempt[0].Total_times_attempted;
               courseGraphArr.push({c: [{v:course_name},{v:total_time_attempted}]});
             }
           }
@@ -165,8 +164,8 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
           }
 
 
-          }).error(function(data, status){
-              console.log(" status ",status);
+          }).error(function(data, status,$event){
+              $scope.showAlert($event);
           });
 
       }
@@ -182,8 +181,6 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
         var api = $scope.getApiByCourseIds(courseIds);
         
         $http.get(api).success(function(data, status, headers, config){
-
-            console.log(" success ");
 
             var responseCourse;
             var courseGraphArr = [];
@@ -229,10 +226,30 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
           }
 
 
-          }).error(function(data, status){
-              console.log(" status ",status);
+          }).error(function(data, status,$event){
+              $scope.showAlert($event);
           });
        }
+
+          $scope.showAlert = function(ev) {
+              var defaults = {
+              title: 'Confirm',
+              content: '',
+              event: null
+         };
+
+      var opts = angular.merge({}, defaults);
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            
+            .textContent('No user data available')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('Dismiss')
+            .targetEvent(opts.event)
+        );
+      };
 
        $scope.getApiByCourseIds = function(courseIds){
 
@@ -243,25 +260,24 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
         var api = $scope.getApiByUserIds(userIds);
         
-        $http.get(api).success(function(data, status, headers, config){
+        $http.get(api).success(function(responseCourse, status, headers, config){
 
-            console.log(" success ");
-
-            var responseCourse;
+           // var responseCourse;
             var courseGraphArr = [];
             // store response data in a variable
-            responseCourse = data;
+            //responseCourse = data;
             if(responseCourse.ResultData.length >0){
              // console.log("No data found");
             for( i = 0; i < responseCourse.ResultData.length ; i++){
                
               delete responseCourse.ResultData[i].CourseId;
               var obj = responseCourse.ResultData[i];
-              console.log("obj is :",obj);
+
+              //console.log("obj is :",obj.UsersAttempt[0],i);
               var course_name = obj.CourseName;
-              console.log("name is :", course_name);
-              var total_time_attempted = obj.UsersAttempt[i].Total_times_attempted;
-              console.log("attempts",total_time_attempted);
+              //console.log("name is :", course_name);
+              var total_time_attempted = obj.UsersAttempt[0].Total_times_attempted;
+              //console.log("attempts",total_time_attempted);
               courseGraphArr.push({c: [{v: course_name},{v: total_time_attempted}]});
             }
           }
@@ -294,8 +310,8 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
           }
 
 
-          }).error(function(data, status){
-              console.log(" status ",status);
+          }).error(function(data, status,$event){
+              $scope.showAlert($event);
           });
        }
 
@@ -345,56 +361,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
        else if(userIdArr){
 
         $scope.showCoursesDetailByUserId(userIdArr);
-          /*$http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course&users="+userIdArr)
-          .then(function(response) {
-
-            console.log(" hello 2");
-            var responseUser;
-            var userGraphArr = [];
-            // store response data in a variable
-
-            responseUser = response.data;
-            console.log(responseUser);
-            if(responseUser.ResultData.length>0){
-            for( i = 0; i < responseUser.ResultData.length ; i++){
-              delete responseUser.ResultData[i].CourseId;
-              delete responseUser.ResultData[i].UsersAttempt[0].userId;
-              userGraphArr.push({c: [{v: responseUser.ResultData[i].CourseName},{v: responseUser.ResultData[i].UsersAttempt[0].Total_times_attempted}]});
-            }}
-
-
-            //console.log(courseGraphArr);
-            $scope.chartObject = {};
-            $scope.chartObject.type = "ColumnChart";
-
-            $scope.chartObject.data = {"cols": [
-              {id: "t", label: "Course Name", type: "string"},
-              {id: "s", label: "View Count", type: "number"}
-            ], "rows": userGraphArr
-          };
-
-
-          $scope.chartObject.options = {
-            'title': 'Graph',
-            'vAxis': {
-              'title': 'View Count',
-              logScale:true,
-              'gridlines': {
-                'count': 10
-              }
-            },
-            'hAxis': {
-              'title': 'Courses',
-
-            }
-          };
-
-
-
-        });
-        }
-
-*/
+          
       }}
       // The md-select directive eats keydown events for some quick select
       // logic. Since we have a search input here, we don't need that logic.
