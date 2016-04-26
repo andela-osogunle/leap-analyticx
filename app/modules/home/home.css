@@ -38,3 +38,15 @@
     width: auto; }
   .selectdemoSelectHeader md-content._md {
     max-height: 240px; }
+
+    .mg-toolbar-tools{
+     background: red;
+    }
+    .filterHeaderCss{
+  
+    margin-top: 0px;
+    padding-top: 5px;
+    margin-bottom: 0px;
+    background-color: lavender;
+
+    }

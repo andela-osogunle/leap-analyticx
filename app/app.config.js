@@ -16,23 +16,21 @@
 		.run(runBlock);
 		
 
-	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
+	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider','$mdThemingProvider'];
 
-	function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+	function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,$mdThemingProvider) {
 		// This is required for Browser Sync to work poperly
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 		 //$httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
-
+        $mdThemingProvider.theme('default')
+       .primaryPalette('teal')
+        .accentPalette('blue');
 
 		$urlRouterProvider
 				.otherwise('/login');
 
 		//$locationProvider.hashPrefix('!');
-
-
-
-
-	}
+   	}
 
 	runBlock.$inject = ['$rootScope'];
 
