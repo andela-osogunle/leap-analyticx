@@ -21,8 +21,9 @@
 		$scope.Name = '';
 		$scope.dataLoading = false;
 
-
-
+		//$scope.image="../../images/login_bg.jpg";
+  		//$scope.bodyStyle = {background: "url(" + $scope.image + ") no-repeat center center fixed"};
+  		//angular.element('body').css('background-image', "url("+$scope.image + ")");
 
 		// Login functionality for user
 		$scope.login = function () {

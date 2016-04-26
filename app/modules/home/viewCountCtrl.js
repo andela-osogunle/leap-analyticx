@@ -58,9 +58,6 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
       $http.get(BASE_VIEW_COUNT_API+"users?pageNo=1&rpp=500")
       .then(function(response) {
 
-        if($http.status===404){
-          console.log("No data found");
-        }
         var userData = response.data.users;
         
         //console.log(userData);
@@ -124,7 +121,7 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
             //responseCourse = data;
 
             if(responseCourse.ResultData.length >= 0){
-              console.log("No data found");
+            
             for( i = 0; i < responseCourse.ResultData.length ; i++){
                
               delete responseCourse.ResultData[i].CourseId;

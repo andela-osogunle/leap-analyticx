@@ -22,19 +22,15 @@
 		// This is required for Browser Sync to work poperly
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 		 //$httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
-        $mdThemingProvider.theme('input', 'default')
-        .primaryPalette('yellow')
-        .dark();
+        $mdThemingProvider.theme('default')
+       .primaryPalette('teal')
+        .accentPalette('blue');
 
 		$urlRouterProvider
 				.otherwise('/login');
 
 		//$locationProvider.hashPrefix('!');
-
-
-
-
-	}
+   	}
 
 	runBlock.$inject = ['$rootScope'];
 

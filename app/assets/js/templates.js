@@ -31,7 +31,7 @@ angular.module('leap-analyticx').run(['$templateCache', function($templateCache)
     "            <div layout=\"column\" class=\"md-toolbar-tools-bottom inset\">\n" +
     "                <div layout=\"row\">\n" +
     "                    <div flex=\"80\" style=\"margin-top: 10px;\">\n" +
-    "                        <div>leap-analyticx</div>\n" +
+    "                        <div>Leap Analyticx</div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -67,7 +67,7 @@ angular.module('leap-analyticx').run(['$templateCache', function($templateCache)
     "            <md-button ng-click=\"layout.toggleSidenav('left')\" hide-gt-md aria-label=\"Menu\">\n" +
     "                <ng-md-icon icon=\"menu\"></ng-md-icon>\n" +
     "            </md-button>\n" +
-    "            <h3>leap-analyticx</h3>\n" +
+    "            <h3>Leap Analyticx</h3>\n" +
     "            <span flex></span>\n" +
     "            <md-button aria-label=\"Search\" ng-click=\"showSearch = !showSearch\">\n" +
     "                <ng-md-icon icon=\"search\"></ng-md-icon>\n" +
