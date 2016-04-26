@@ -1,4 +1,4 @@
-angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia) {
+angular.module("home", ['ngMaterial']).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia) {
   
   // store response data in a variable
   var responsejson;
@@ -13,7 +13,6 @@ angular.module("home", []).controller("ViewCountCtrl", function ($scope,$http,$w
 
   //API Variables
   var BASE_VIEW_COUNT_API = "http://10.11.9.8/api/v1/";
-
 
     $scope.myDate = new Date();
     $scope.minDate = new Date(
