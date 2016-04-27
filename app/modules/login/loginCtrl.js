@@ -128,7 +128,7 @@
 			}).then(function (response) {
 				$window.sessionStorage["Token"] = response.headers('x-auth-token');
 				deferred.resolve(response.data);
-				console.log(response.data);
+				
 			}, function (error) {
 				deferred.reject(error);
 			});
@@ -136,7 +136,7 @@
 		},
 		logout: function (userName, password) {
 			var deferred = $q.defer();
-			var logoutUrl = leapconfig.ServiceBaseUrl + leapconfig.Logout;
+			var logoutUrl = app.config.ServiceBaseUrl + app.config.Logout;
 			$http.get(logoutUrl).then(function (response) {
 				$window.sessionStorage["BasicAuth"] = null;
 				$window.sessionStorage["Token"] = null;

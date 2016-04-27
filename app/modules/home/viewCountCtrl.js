@@ -1,5 +1,9 @@
-angular.module("home", ['ngMaterial']).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia,$mdSidenav) {
+angular.module("home", ['ngMaterial', 'ngMessages']).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia,$mdSidenav) {
   
+  if($http.defaults.headers.common['x-auth-token'] == 'null'){
+    $window.location.href = '/#/login';
+  }
+
   // store response data in a variable
   var responsejson;
   var graphMainArr=[];
