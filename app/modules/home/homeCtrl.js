@@ -1,19 +1,11 @@
 (function () {
 	'use strict';
 
-	/**
-	 * @ngdoc function
-	 * @name app.controller:HomeCtrl
-	 * @description
-	 * # HomeCtrl
-	 * Controller of the app
-	 */
-
 	 angular
  		.module('leap-analyticx')
  		.controller('HomeCtrl', Home);
 
- 	Home.$inject = ['homeService'];
+ 	  Home.$inject = ['homeService'];
 
  	/*
  	 * recommend

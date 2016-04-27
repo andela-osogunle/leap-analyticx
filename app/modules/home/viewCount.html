@@ -1,8 +1,21 @@
-<center><h1 class="filterHeaderCss">Filters</h1></center>
-<div layout="row" layout-align="space-around center" layout-xs="6" layout-gt-xs="6" layout-sm="6" layout-gt-sm="6" >
-
-<div class="inset" class="md-padding" ng-cloak>
-                    <ng-md-icon icon="description"></ng-md-icon>
+<!-- <center><h1 class="filterHeaderCss">Filters</h1></center> -->
+<div layout="column" align="end">
+<div layout="column" layout-align="space-around center">
+<md-sidenav md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right">
+<md-toolbar class="md-tall md-hue-2">
+            <div layout="column" layout-align="center center"  class="md-toolbar-tools-bottom inset">
+                <div layout="row">
+                    <div flex="80" style="margin-top: 10px;">
+                        <div>Filters</div>
+                    </div>
+                </div>
+            </div>
+        </md-toolbar>
+<md-list>
+<div layout="column"  layout-align="space-around stretch">
+<div layout="row" layout="center">
+<div class="inset" layout="center" class="md-padding" ng-cloak>
+    <ng-md-icon icon="description"></ng-md-icon>
 </div>
 <md-select id="mg-courseSelector" ng-change="onCourseSelectValueChange(ddlvalue)"  data-ng-model="ddlvalue"  placeholder="Select courses"
                    md-on-close="clearSearchTerm()"
@@ -17,8 +30,11 @@
           <md-optgroup label="courses">
             <md-option ng-value="course" ng-repeat="course in courses track by $index">{{course.title}}</md-option>
           </md-optgroup>
-        </md-select>
-                <div class="inset">
+    </md-select>
+ </div>       
+
+ <div layout="row" layout="center center">
+                <div class="inset" layout="center">
                     <ng-md-icon icon="people"></ng-md-icon>
                 </div>
             <md-select  ng-change="onUserSelectValueChange(ddlvalue1)"  data-ng-model="ddlvalue1" placeholder="Select users"
@@ -35,13 +51,24 @@
             <md-option ng-value="user" ng-repeat="user in users track by $index">{{user.name}}</md-option>
           </md-optgroup>
         </md-select>
-
+</div>
+<div layout="row" layout="center center">
   <md-datepicker ng-model="startDate"  md-placeholder="Enter start date"></md-datepicker>
-
+</div>
+<div layout="row" layout="center center">
   <md-datepicker ng-model="endDate" md-placeholder="Enter end date"></md-datepicker>
-  <md-button class="md-raised md-primary"  layout-align="end center" ng-click="submit()">Submit</md-button>
+</div>
+  <md-button class="md-raised"  layout-align="end center" ng-click="submit();openLeftMenu()">Apply</md-button>
+</div>
+</md-list>
+</md-sidenav>
   </div>
-  
+         <md-content>
+            <md-button class="md-raised md-warn" ng-click="openLeftMenu()">
+             Filter
+            </md-button>
+          </md-content>
+  </div>
   <div layout="row" layout-wrap  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6">
-   <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>
+  <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>
   </div>
