@@ -17,7 +17,7 @@
         $mdThemingProvider.theme('default')
        .primaryPalette('teal')
         .accentPalette('blue');
-
+        $mdThemingProvider.theme('input')
 		$urlRouterProvider
 				.otherwise('/login');
 
