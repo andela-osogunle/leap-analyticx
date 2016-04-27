@@ -1,4 +1,4 @@
-angular.module("home", ['ngMaterial']).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia) {
+angular.module("home", ['ngMaterial']).controller("ViewCountCtrl", function ($scope,$http,$window,$element,$mdDialog, $mdMedia,$mdSidenav) {
   
   // store response data in a variable
   var responsejson;
@@ -13,6 +13,16 @@ angular.module("home", ['ngMaterial']).controller("ViewCountCtrl", function ($sc
 
   //API Variables
   var BASE_VIEW_COUNT_API = "http://10.11.9.8/api/v1/";
+
+  $scope.isSidenavOpen = false;
+    
+  $scope.openLeftMenu = function() {
+    $mdSidenav('right').toggle();
+  };
+    
+  $scope.$watch('isSidenavOpen', function(isSidenavOpen) {
+      //alert('sidenav is ' + (isSidenavOpen ? 'open' : 'closed'));
+  });
 
     $scope.myDate = new Date();
     $scope.minDate = new Date(

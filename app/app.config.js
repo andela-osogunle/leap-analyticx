@@ -1,14 +1,6 @@
 (function () {
 	'use strict';
 
-	/**
-	 * @ngdoc configuration file
-	 * @name app.config:config
-	 * @description
-	 * # Config and run block
-	 * Configutation of the app
-	 */
-
 
 	angular
 		.module('leap-analyticx')
@@ -37,7 +29,6 @@
 	function runBlock($rootScope) {
 		'use strict';
 
-		// console.log('AngularJS run() function...');
 	}
 
 
