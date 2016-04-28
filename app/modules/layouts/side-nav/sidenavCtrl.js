@@ -51,9 +51,7 @@
 		];
 
 		vm.navigateTo = function (target) {
-
 			var page = target;
-
 			$state.go(page);
 
 		};

@@ -90,25 +90,7 @@
 		vm.logOut = function () {
 			$window.sessionStorage.Token=null;
 			$window.location.href = '/#/login';
-   //       $http.get("http://10.11.9.8/api/v1/logout")
-   //        .then(function(response) {
-   //       console.log("response is",response);
-   //       $window.location.href = '/#/login';
-		 // // console.log("The Token is:",$http);
-		 // // alert('Logout is clicked');
-	  // //    $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-   // //       $http.defaults.headers.common['Content-Type'] = 'application/json';
-   // //       $http.defaults.headers.common['x-auth-token'] = $window.sessionStorage.Token; 
-		 // //console.log("$window.sessionStorage.Token",$window.sessionStorage.Token);
-		 // // $http.get('http://10.11.9.8/api/v1/logout')
-		 // // .success(function(response){
-		 // // 	console.log("Logged out success!!");
-   // //         $window.location.href = '/#/login';
-		 // // })
-
-   //  });
-
-		};
+        };
 
 		var originatorEv;
 		vm.openMenu = function ($mdOpenMenu, ev) {

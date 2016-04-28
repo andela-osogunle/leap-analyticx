@@ -386,7 +386,9 @@ angular.module("home", ['ngMaterial', 'ngMessages']).controller("ViewCountCtrl",
       $element.find('input').on('keydown', function(ev) {
         ev.stopPropagation();
       });
-      $scope.name="To be prepared";
+      $scope.DashboardName="Dashboard";
+      $scope.ViewCountName = "View Count";
+      $scope.TimeSpentName = "Time Spent"
 
 
       $http.get("http://10.11.9.8/api/v1/analytics/viewcount?action=attempted&type=course")

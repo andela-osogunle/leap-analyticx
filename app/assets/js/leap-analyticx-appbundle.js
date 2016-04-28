@@ -300,9 +300,12 @@ angular.module('leap-analyticx')
 
 		vm.navigateTo = function (target) {
 
-			var page = target;
+			//var ngTitle = elem.find("ng-top-nav-title");
+			//console.log(" ngTitle ","ngTitle");
 
+			var page = target;
 			$state.go(page);
+			//ng-top-nav-title
 
 		};
 
