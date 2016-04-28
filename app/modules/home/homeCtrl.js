@@ -5,7 +5,8 @@
  		.module('leap-analyticx')
  		.controller('HomeCtrl', Home);
 
- 	  Home.$inject = ['homeService'];
+ 	  Home.$inject = ['homeService','$scope'];
+
 
  	/*
  	 * recommend
@@ -13,12 +14,14 @@
  	 * and bindable members up top.
  	 */
 
- 	function Home(homeService) {
+ 	function Home(homeService, $scope) {
  		/*jshint validthis: true */
  		var vm = this;
- 		vm.title = "Hello, leap-analyticx!";
+ 		//vm.title = "Hello, leap-analyticx!";
  		vm.version = "1.0.0";
  		vm.listFeatures = homeService.getFeaturesList();
+
+ 		$scope.pageTitle = "Manikant";
 
  	}
 
