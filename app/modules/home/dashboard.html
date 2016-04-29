@@ -1,10 +1,37 @@
-<div layout = "column" layout-align="center center" >
-	<center>
+  <center>
 	  <h1>{{DashboardName}}</h1>
 	</center>
 
-  <div layout="row" layout-align="center center">
-  <div flex="50" style="height: 200px;">View count</div>
-  <div flex="50" style="height: 200px;">Time Spent</div>
-</div>
-</div>
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex layout="row">
+      <md-card flex="50">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">View Count</span>
+            <span class="md-subhead">Shows view Count of the user corresponding to its courses</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media viewCountBg"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-primary" ng-click="redirectToViewCount()">Show View Count</md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card flex="50">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Time Spent</span>
+            <span class="md-subhead">Shows Time spent if the user on each courses</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media timeSpentBg"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-primary" ng-click="redirectToTimeSpent()">Show Time Spent</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-content>

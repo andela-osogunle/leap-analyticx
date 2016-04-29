@@ -19,7 +19,15 @@ angular.module("home", ['ngMaterial', 'ngMessages']).controller("ViewCountCtrl",
   var BASE_VIEW_COUNT_API = "http://10.11.9.8/api/v1/";
 
   $scope.isSidenavOpen = false;
-    
+
+  $scope.redirectToViewCount = function(){
+  location = "#/viewcount";
+  }
+
+  $scope.redirectToTimeSpent = function(){
+  location = "#/timeSpent";
+  }
+
   $scope.openLeftMenu = function() {
     $mdSidenav('right').toggle();
   };

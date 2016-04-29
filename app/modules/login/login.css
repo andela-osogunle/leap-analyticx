@@ -1,8 +1,10 @@
 .loginbg{
-	background-color: #9E9E9E;
+	background-image:url('images/background.png') ;
+	background-size: cover;
 }
 
 .loginContainer{
 	background-color: 	#0000CD;
 }
+
 

@@ -50,3 +50,12 @@
     background-color: lavender;
 
     }
+    .viewCountBg{
+      background-image:url('images/stats.jpg') ;
+      background-size: cover;
+    }
+
+    .timeSpentBg{
+      background-image:url('images/timer.jpg') ;
+      background-size: cover;
+    }

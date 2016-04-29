@@ -1,30 +1,41 @@
 <body layout="row" >
     <div layout="column" flex id="content" role="main" ng-controller="LoginCtrl" >
 			<md-content class="loginbg" layout="vertical" flex id="loginContent" layout-align="center center">
-				<div layout="row" layout-align="center center" layout-fill>
+				<div layout="row" layout-align="center center" layout-fill flex="100">
 					<md-whiteframe-1dp layout="column" flex="35" layout-padding>
 						<md-content form name="projectForm" >
-							<md-input-container class="md-block">
+							<div layout="row"  layout-fill flex="100">
+                            <div class="inset" layout="center" >
+                     <ng-md-icon icon="people"></ng-md-icon>
+                     </div>
+							<md-input-container class="md-block" flex>
 								<label>Username</label>
 								<input required name="clientName" ng-model="username">
 								<div ng-messages="projectForm.clientName.$error">
-									<div ng-message="required">This is required.</div>
+								<div ng-message="required">This is required.</div>
 								</div>
 							</md-input-container>
-							<md-input-container class="md-block">
+
+							</div>
+							<div layout="row" layout-fill>
+							<div class="inset" layout="center" >
+                             <ng-md-icon icon="lock"></ng-md-icon>
+                             </div>
+							<md-input-container class="md-block" flex>
 								<input ng-model="password" type="password" placeholder="Password" ng-required="true">
 								<div ng-messages="projectForm.clientName.$error">
 								<div ng-message="required">This is required.</div>
 							</div>
 							</md-input-container>
+						</div>	
 						<md-input-container layout-align="center center">
 						<div layout="row" layout-sm="column" layout-margin>
 						<md-button class="md-raised md-accent" ng-click="login()" ng-enter="login()">Login</md-button>
 	         		 </div>
-          			
-             </md-input-container>
+          			</md-whiteframe>
+              </md-input-container>
     			 </form md-content>
-    		   </md-whiteframe>
+    		   
     		</div>	
   		</md-content>
    </div>
