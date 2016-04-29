@@ -16,7 +16,7 @@
                 </div>
                 <p> Dashboard </p>
             </md-list-item>
-            <md-list-item ui-sref="home.viewCount">
+            <!-- <md-list-item ui-sref="home.viewCount">
                 <div class="inset">
                     <ng-md-icon icon="poll"></ng-md-icon>
                 </div>
@@ -27,7 +27,7 @@
                     <ng-md-icon icon="timer"></ng-md-icon>
                 </div>
                 <p> Time Spent </p>
-            </md-list-item>
+            </md-list-item> -->
             <md-list-item ng-repeat="item in vm.menu" ng-click="vm.navigateTo('home.' + item.link)">
                 <div class="inset" ng-show="item.icon">
                     <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
