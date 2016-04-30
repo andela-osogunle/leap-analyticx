@@ -1,6 +1,12 @@
 language: node_js
 node_js:
-  - '0.10'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'leap-analyticx' ]; then cd .. && eval "mv $currentfolder leap-analyticx" && cd leap-analyticx; fi
+  - "0.10"
+branches:
+  only:
+    - master
+before_script:
+  - npm install -g bower
+  - npm install phantomjs
+  - npm install -g karma
+  - bower install
+  - grunt build
