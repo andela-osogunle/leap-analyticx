@@ -11,6 +11,6 @@ before_script:
   - npm install -g karma
   - find /home/travis/.nvm/v0.10.44/bin/node -type d -exec chmod 755 {} \;
   - find /home/travis/.nvm/v0.10.44/bin/node -type f -exec chmod 644 {} \; 
-  - sudo ln -s /usr/bin/nodejs /usr/bin/node /usr/bin/env
+  - sudo chmod 755 /usr/bin/env 
   - bower install
   - grunt build
