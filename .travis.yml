@@ -11,6 +11,7 @@ before_script:
   - npm install -g karma
   - find /home/travis/.nvm/v0.10.44/bin/node -type d -exec chmod 755 {} \;
   - find /home/travis/.nvm/v0.10.44/bin/node -type f -exec chmod 644 {} \; 
-  - sudo chmod 755 /usr/bin/env 
+  - sudo chmod 755 /usr/bin/env
+  - sudo apt-get install nodejs-legacy 
   - bower install
   - grunt build
