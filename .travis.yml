@@ -4,9 +4,12 @@ node_js:
 branches:
   only:
     - master
+sudo: required
 before_script:
   - npm install -g bower
   - npm install phantomjs
   - npm install -g karma
+  - find /home/travis/.nvm/v0.10.44/bin/node -type d -exec chmod 755 {} \;
+  - find /home/travis/.nvm/v0.10.44/bin/node -type f -exec chmod 644 {} \; 
   - bower install
   - grunt build
