@@ -7,6 +7,6 @@ branches:
 before_script:
   - npm install bower
   - npm install phantomjs
-  - npm install -g karma
+  - npm install karma
   - bower install
   - grunt build
